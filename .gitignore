@@ -1,0 +1,77 @@
+### BASE IGNORE ###
+HELP.md
+/bin/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+.settings/
+
+### IntelliJ IDEA ###
+.ideaHELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### IntelliJ IDEA ###
+.idea
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Maven ###
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+dependency-reduced-pom.xml
+.flattened-pom.xml
+release.properties
+buildNumber.properties
+.mvn
+mvnw
+mvnw.cmd
+log/
+
+### Package Files ###
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+### Others Files ###
+.DS_Store
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+hs_err_pid*
+/nbproject/
+/.run/
+**/*.iml
+**/.idea
+out/
