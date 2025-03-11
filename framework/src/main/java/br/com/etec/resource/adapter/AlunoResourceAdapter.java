@@ -12,10 +12,11 @@ public class AlunoResourceAdapter {
 
     public static Aluno cast(final AlunoRequest request) {
         return new Aluno(
-                0,
+                0L,
                 request.nome(),
                 request.cpf(),
                 request.telefone(),
+                request.email(),
                 new AlunoEndereco(
                         request.cep(),
                         "",
@@ -31,6 +32,7 @@ public class AlunoResourceAdapter {
                 aluno.id(),
                 aluno.nome(),
                 aluno.telefone(),
+                aluno.email(),
                 new AlunoEnderecoResponse(
                         aluno.endereco().cep(),
                         aluno.endereco().logradouro(),

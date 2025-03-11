@@ -1,10 +1,11 @@
 package br.com.etec.entity;
 
 public record Aluno(
-        Integer id,
+        Long id,
         String nome,
         String cpf,
         String telefone,
+        String email,
         AlunoEndereco endereco
 ) {
 }

@@ -1,6 +1,16 @@
 spring:
   application:
     name: trinity
+  datasource:
+    url: jdbc:mysql://localhost:3306/mydatabase?allowPublicKeyRetrieval=true&useSSL=false
+    username: myuser
+    password: mypassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
 feign:
   client:
@@ -9,9 +19,10 @@ feign:
         readTimeout: 10
         connectTimeout: 10
     via-cep:
-      url: https://viacep.com.br/wse
+      url: https://viacep.com.br/ws
 
 logging:
   level:
     root: INFO
-    org.springframework.cloud.circuitbreaker.resilience4j: DEBUG
+    org.springdoc: DEBUG
+    org.springframework.web: DEBUG

@@ -1,9 +1,10 @@
 package br.com.etec.resource.dto.response;
 
 public record AlunoResponse(
-        Integer id,
+        Long id,
         String nome,
         String telefone,
+        String email,
         AlunoEnderecoResponse endereco
 ) {
 }

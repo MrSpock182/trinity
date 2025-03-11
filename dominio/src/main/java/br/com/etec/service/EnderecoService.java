@@ -23,6 +23,7 @@ public class EnderecoService {
                 aluno.nome(),
                 aluno.cpf(),
                 aluno.telefone(),
+                aluno.email(),
                 endereco));
     }
 }

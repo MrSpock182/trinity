@@ -11,5 +11,5 @@ public interface AlunoRepository {
 
     List<Aluno> findAll();
 
-    void delete(String id);
+    void delete(Long id);
 }
