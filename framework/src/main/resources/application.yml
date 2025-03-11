@@ -1,3 +1,17 @@
 spring:
   application:
     name: trinity
+
+feign:
+  client:
+    config:
+      default:
+        readTimeout: 10
+        connectTimeout: 10
+    via-cep:
+      url: https://viacep.com.br/wse
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.circuitbreaker.resilience4j: DEBUG
