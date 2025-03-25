@@ -19,23 +19,4 @@ public class ClientResource {
     public String nameUser(@RequestBody final UserRequest request) {
         return request.name();
     }
-
-    @ResponseStatus(OK)
-    @GetMapping("/update")
-    public String update() {
-        return "RECURSO ATUALIZADO";
-    }
-
-    @ResponseStatus(OK)
-    @GetMapping("/novo")
-    public String novo() {
-        return "NOVO";
-    }
-
-    @ResponseStatus(OK)
-    @GetMapping("/sandro")
-    public String sandro() {
-        return "SANDRO";
-    }
-
 }
