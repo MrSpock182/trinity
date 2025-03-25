@@ -26,10 +26,10 @@ public class ClientResource {
         return "RECURSO ATUALIZADO";
     }
 
-//    @ResponseStatus(OK)
-//    @GetMapping("/novo")
-//    public String novo() {
-//        return "NOVO";
-//    }
+    @ResponseStatus(OK)
+    @GetMapping("/novo")
+    public String novo() {
+        return "NOVO";
+    }
 
 }
