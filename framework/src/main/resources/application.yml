@@ -1,3 +1,15 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: trinity
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info
