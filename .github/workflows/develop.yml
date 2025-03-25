@@ -61,23 +61,27 @@ jobs:
         id: task-def
         run: |
           IMAGE_URI=${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ steps.version.outputs.version }}
-          
-          # Recupera a última definição da task
+
+          # Recupera a task definition base
           aws ecs describe-task-definition \
-          --task-definition studio-trek-service-dev \
-          --query "taskDefinition" > task-definition.json
-          
-          # Atualiza a imagem do primeiro container na task definition
+            --task-definition studio-trek-task-dev \
+            --query "taskDefinition" > task-definition.json
+
+          # Atualiza a imagem do primeiro container
           jq ".containerDefinitions[0].image = \"${IMAGE_URI}\"" task-definition.json > task-def-updated.json
-          
+
           # Remove campos imutáveis
           jq "del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy)" task-def-updated.json > final-task-def.json
-          
-          # Registra nova definição
-          NEW_TASK_DEF_ARN=$(aws ecs register-task-definition --cli-input-json file://final-task-def.json --query "taskDefinition.taskDefinitionArn" --output text)
+
+          # Registra nova task definition
+          NEW_TASK_DEF_ARN=$(aws ecs register-task-definition \
+            --cli-input-json file://final-task-def.json \
+            --query "taskDefinition.taskDefinitionArn" \
+            --output text)
+
           echo "task_def_arn=$NEW_TASK_DEF_ARN" >> $GITHUB_OUTPUT
 
-      - name: Atualizar ECS Service
+      - name: Atualizar serviço ECS
         run: |
           aws ecs update-service \
             --cluster studio-trek-cluster-dev \
