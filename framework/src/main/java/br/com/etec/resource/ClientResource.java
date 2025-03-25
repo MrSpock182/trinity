@@ -20,16 +20,16 @@ public class ClientResource {
         return request.name();
     }
 
-    @ResponseStatus(OK)
-    @GetMapping("/update")
-    public String update() {
-        return "RECURSO ATUALIZADO";
-    }
-
-    @ResponseStatus(OK)
-    @GetMapping("/novo")
-    public String novo() {
-        return "NOVO";
-    }
+//    @ResponseStatus(OK)
+//    @GetMapping("/update")
+//    public String update() {
+//        return "RECURSO ATUALIZADO";
+//    }
+//
+//    @ResponseStatus(OK)
+//    @GetMapping("/novo")
+//    public String novo() {
+//        return "NOVO";
+//    }
 
 }
