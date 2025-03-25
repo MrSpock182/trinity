@@ -14,13 +14,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Replace environment variables in template
-        run: |
-          sed -i "s|!Ref AmbAwsRegion|${{ secrets.DEV_AWS_REGION }}|g" template.yaml
-          sed -i "s|!Ref accessKey|${{ secrets.DEV_AWS_ACCESS_KEY_ID }}|g" template.yaml
-          sed -i "s|!Ref secretKey|${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}|g" template.yaml
+        uses: actions/checkout@v4
 
       - name: Set up Java
         uses: actions/setup-java@v2
@@ -41,11 +35,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.DEV_AWS_REGION }}
 
-      - name: Checkout código
-        uses: actions/checkout@v4
-
       - name: Login no ECR
         uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Install xmllint
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
 
       - name: Extrair versão do pom.xml
         id: version
