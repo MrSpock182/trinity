@@ -32,4 +32,10 @@ public class ClientResource {
         return "NOVO";
     }
 
+    @ResponseStatus(OK)
+    @GetMapping("/sandro")
+    public String sandro() {
+        return "SANDRO";
+    }
+
 }
