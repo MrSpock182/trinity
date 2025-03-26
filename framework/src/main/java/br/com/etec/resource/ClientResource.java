@@ -19,4 +19,10 @@ public class ClientResource {
     public String nameUser(@RequestBody final UserRequest request) {
         return request.name();
     }
+
+    @ResponseStatus(OK)
+    @GetMapping("/feliz")
+    public String feliz() {
+        return "O MARCELO ESTA FELIZ";
+    }
 }
