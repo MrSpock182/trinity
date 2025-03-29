@@ -31,7 +31,7 @@ jobs:
       - name: Extrair versão do pom.xml
         id: version
         run: |
-          VERSION=$(xmllint --xpath "/*[local-name()='project']/*[local-name()='version']/text()" framework/pom.xml)
+          VERSION=$(xmllint --xpath "/*[local-name()='project']/*[local-name()='version']/text()" pom.xml)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Configurar credenciais AWS
