@@ -60,7 +60,7 @@ jobs:
           IMAGE_URI=${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ steps.version.outputs.version }}
 
           aws ecs describe-task-definition \
-            --task-definition studio-trek-task-dev \
+            --task-definition trinity-task-dev \
             --query "taskDefinition" > task-definition.json
 
           jq ".containerDefinitions[0].image = \"${IMAGE_URI}\"" task-definition.json > task-def-updated.json
@@ -77,6 +77,6 @@ jobs:
         run: |
           aws ecs update-service \
             --cluster studio-trek-cluster-dev \
-            --service studio-trek-service-dev \
+            --service trinity-service-dev \
             --task-definition ${{ steps.task-def.outputs.task_def_arn }} \
             --force-new-deployment
