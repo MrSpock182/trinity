@@ -12,12 +12,63 @@ import java.util.Map;
 @Configuration
 public class MskTopicConfig {
     @Bean
-    public NewTopic mksTopic(@Value("${spring.kafka.topic.msk-topic}") final String topic) {
+    public NewTopic mksTopic(
+            @Value("${spring.kafka.replicas}") final Integer replicas,
+            @Value("${spring.kafka.partitions}") final Integer partitions,
+            @Value("${spring.kafka.topic.msk-topic}") final String topic) {
         return TopicBuilder
                 .name(topic)
-                .partitions(10)
-                .replicas(2)
+                .partitions(partitions)
+                .replicas(replicas)
                 .compact()
+                .configs(topicConfigs())
+                .build();
+    }
+
+    @Bean
+    public NewTopic retryTopic0(
+            @Value("${spring.kafka.replicas}") final Integer replicas,
+            @Value("${spring.kafka.partitions}") final Integer partitions,
+            @Value("${spring.kafka.topic.msk-topic}") final String topic) {
+        return TopicBuilder.name(topic + "-retry-0")
+                .partitions(partitions)
+                .replicas(replicas)
+                .configs(topicConfigs())
+                .build();
+    }
+
+    @Bean
+    public NewTopic retryTopic1(
+            @Value("${spring.kafka.replicas}") final Integer replicas,
+            @Value("${spring.kafka.partitions}") final Integer partitions,
+            @Value("${spring.kafka.topic.msk-topic}") final String topic) {
+        return TopicBuilder.name(topic + "-retry-1")
+                .partitions(partitions)
+                .replicas(replicas)
+                .configs(topicConfigs())
+                .build();
+    }
+
+    @Bean
+    public NewTopic retryTopic2(
+            @Value("${spring.kafka.replicas}") final Integer replicas,
+            @Value("${spring.kafka.partitions}") final Integer partitions,
+            @Value("${spring.kafka.topic.msk-topic}") final String topic) {
+        return TopicBuilder.name(topic + "-retry-2")
+                .partitions(partitions)
+                .replicas(replicas)
+                .configs(topicConfigs())
+                .build();
+    }
+
+    @Bean
+    public NewTopic dltTopic(
+            @Value("${spring.kafka.replicas}") final Integer replicas,
+            @Value("${spring.kafka.partitions}") final Integer partitions,
+            @Value("${spring.kafka.topic.msk-topic}") final String topic) {
+        return TopicBuilder.name(topic + "-dlt")
+                .partitions(partitions)
+                .replicas(replicas)
                 .configs(topicConfigs())
                 .build();
     }
