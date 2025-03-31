@@ -7,9 +7,6 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 @Component
 public class UserProducerWithKafka {
@@ -22,11 +19,13 @@ public class UserProducerWithKafka {
     }
 
     public void produce(final String name) {
-        try {
-            kafkaTemplate.send("mks-topic", UUID.randomUUID().toString(), new UserProducer(name))
-                    .get(5, TimeUnit.SECONDS);
-        } catch (InterruptedException | ExecutionException | TimeoutException ex) {
-            LOGGER.error("Producing error {}", name, ex);
-        }
+        kafkaTemplate.send("mks-topic", UUID.randomUUID().toString(), new UserProducer(name));
+
+//        try {
+//            kafkaTemplate.send("mks-topic", UUID.randomUUID().toString(), new UserProducer(name))
+//                    .get(5, TimeUnit.SECONDS);
+//        } catch (InterruptedException | ExecutionException | TimeoutException ex) {
+//            LOGGER.error("Producing error {}", name, ex);
+//        }
     }
 }

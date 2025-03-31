@@ -35,6 +35,13 @@
         </dependency>
         <!-- SPRING -->
 
+        <!-- KAFKA -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <!-- KAFKA -->
+
         <!-- SWAGGER -->
         <dependency>
             <groupId>org.springdoc</groupId>
