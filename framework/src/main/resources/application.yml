@@ -1,10 +1,23 @@
 server:
+  port: 8080
   servlet:
     context-path: /trinity
 
 spring:
   application:
     name: trinity
+  kafka:
+    replicas: 2
+    partitions: 10
+    bootstrap-servers: b-1.studiotrekkafkadev.5gw9bz.c25.kafka.us-east-1.amazonaws.com:9092,b-2.studiotrekkafkadev.5gw9bz.c25.kafka.us-east-1.amazonaws.com:9092
+    listener:
+      concurrency: 10
+    producer:
+      max-block-ms: 5000
+      auto-create-topics: true
+      bootstrap-servers: ${spring.kafka.bootstrap-servers}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 management:
   endpoint:
