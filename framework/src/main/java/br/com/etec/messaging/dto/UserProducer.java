@@ -1,6 +1,9 @@
 package br.com.etec.messaging.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserProducer {
+    @JsonProperty
     private String name;
 
     public UserProducer() {

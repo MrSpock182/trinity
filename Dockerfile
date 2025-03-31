@@ -9,6 +9,8 @@ WORKDIR /build
 # Copy the source code into the image for building
 COPY . /build
 
+COPY framework/src/main/resources/META-INF/native-image /build/framework/target/META-INF/native-image
+
 # Build
 RUN ./mvnw --no-transfer-progress native:compile -Pnative
 
