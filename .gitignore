@@ -75,3 +75,6 @@ hs_err_pid*
 **/*.iml
 **/.idea
 out/
+
+### GraalVM reflect config ###
+!framework/src/main/resources/META-INF/native-image/reflect-config.json
