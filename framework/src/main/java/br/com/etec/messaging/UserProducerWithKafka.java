@@ -22,14 +22,11 @@ public class UserProducerWithKafka {
     }
 
     public void produce(final String name) {
-        kafkaTemplate.send("mks-topic", UUID.randomUUID().toString(), new UserProducer(name));
-
-//        try {
-//            kafkaTemplate.send("mks-topic", UUID.randomUUID().toString(), new UserProducer(name))
-//                    .get(5, TimeUnit.SECONDS);
-//        } catch (InterruptedException | ExecutionException | TimeoutException ex) {
-//            LOGGER.error("Producing error {}", name, ex);
-//        }
-
+        try {
+            kafkaTemplate.send("mks-topic", UUID.randomUUID().toString(), new UserProducer(name))
+                    .get(5, TimeUnit.SECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException ex) {
+            LOGGER.error("Producing error {}", name, ex);
+        }
     }
 }
