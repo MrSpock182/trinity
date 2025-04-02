@@ -9,6 +9,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 public class TrinityApplication {
 
     public static void main(String[] args) {
+        System.out.println("useSubjectCredsOnly: " + System.getProperty("javax.security.auth.useSubjectCredsOnly"));
         SpringApplication.run(TrinityApplication.class, args);
     }
 
