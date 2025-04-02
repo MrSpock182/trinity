@@ -3,19 +3,24 @@ server:
   servlet:
     context-path: /trinity
 
+client:
+  id: ccloud-springboot-client-92f235ac-a6e6-48f2-a0d8-a60d6bffe0c2
+
 spring:
   application:
     name: trinity
   kafka:
-    replicas: 2
-    partitions: 10
-    bootstrap-servers: b-1.studiotrekkafkadev.opvmnn.c25.kafka.us-east-1.amazonaws.com, b-2.studiotrekkafkadev.opvmnn.c25.kafka.us-east-1.amazonaws.com
+    bootstrap-servers: pkc-p11xm.us-east-1.aws.confluent.cloud:9092
     topic:
       msk-topic: msk-topic
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: >
+        org.apache.kafka.common.security.plain.PlainLoginModule required
+        username="KA6UMHGVOAVWB52M"
+        password="DhKEO7BHQLN2lktD3eQwZMYRS6fKjXS0Dbu+7OCmwmNolIAwU4fCFKPXkDrBw9TH";
     producer:
-      max-block-ms: 5000
-      auto-create-topics: true
-      bootstrap-servers: ${spring.kafka.bootstrap-servers}
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
